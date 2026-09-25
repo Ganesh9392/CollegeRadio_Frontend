@@ -1,0 +1,24 @@
+kind = "mobile"
+previewPath = "/editing-world/"
+title = "EditingWorld"
+description = "A mobile poster browsing and creation app prototype with mock-only onboarding, poster discovery, favorites, downloads, photo processing, and profile flows."
+version = "1.0.0"
+id = "artifacts/editing-world"
+router = "expo-domain"
+
+[[services]]
+name = "expo"
+ensurePreviewReachable = "/status"
+paths = [ "/editing-world/" ]
+localPort = 19244
+
+[services.development]
+run = "pnpm --filter @workspace/editing-world run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/editing-world", "run", "build" ]
+run = [ "pnpm", "--filter", "@workspace/editing-world", "run", "serve" ]
+
+[services.env]
+PORT = "19244"
+BASE_PATH = "/editing-world/"
